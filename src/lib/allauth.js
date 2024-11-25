@@ -62,7 +62,7 @@ export const URLs = Object.freeze({
   SIGNUP_WEBAUTHN: BASE_URL + '/auth/webauthn/signup',
   WEBAUTHN_AUTHENTICATOR: BASE_URL + '/account/authenticators/webauthn',
 
-  USER: API_URL + '/users/me'
+  USER: API_URL + '/organizations'
 })
 
 export const AuthenticatorType = Object.freeze({
@@ -102,7 +102,7 @@ async function request (method, path, data, headers) {
     if (CLIENT === Client.BROWSER) {
       options.headers['X-CSRFToken'] = getCSRFToken()
     //   set 'credentials' to 'include' to send cookies with the request
-        options.credentials = 'include'
+        // options.credentials = 'include'
     } else if (CLIENT === Client.APP) {
       // IMPORTANT!: Do NOT use `Client.APP` in a browser context, as you will
       // be vulnerable to CSRF attacks. This logic is only here for
